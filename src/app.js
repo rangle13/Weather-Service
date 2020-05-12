@@ -7,7 +7,8 @@ const forecast = require('./utils/forecast');
 const app = express();
 
 // Set port value for heroku
-const port = process.env.port || 3000;
+const port = process.env.port || 3001;
+console.log(port);
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -55,7 +56,7 @@ app.get('/weather', (req, res) => {
         if (error) {
             return res.send({ error });
         }
-
+        console.log(latitude);
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
                 return res.send({ error });
